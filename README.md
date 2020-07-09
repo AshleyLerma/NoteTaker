@@ -1,8 +1,14 @@
 # NoteTaker
 
-See it in action:
+![Home Screen Image](photos/notetakerpic.png)
 
 Try it out [HERE](https://note-taker-ashley.herokuapp.com/)
+
+## Install
+
+Prepare with :
+
+`npm install`
 
 ## Description
 
