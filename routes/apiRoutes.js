@@ -16,7 +16,7 @@ module.exports = function (app) {
     db.push(req.body);
     // Add unique id to each note
     db.forEach((obj, i) => {
-      obj.id = i;
+      obj.id = i + 1;
     });
     // Return the new note to the client
     fs.writeFile("./db/db.json", JSON.stringify(db), function () {
@@ -31,7 +31,7 @@ module.exports = function (app) {
     db.splice(id, 1);
     // Reassign id for each note object
     db.forEach((obj, i) => {
-      obj.id = i;
+      obj.id = i + 1;
     });
     // Return the remaining notes to the client
     fs.writeFile("./db/db.json", JSON.stringify(db), function () {
