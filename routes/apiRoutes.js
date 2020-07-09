@@ -25,11 +25,11 @@ module.exports = function (app) {
     });
   });
 
-  // API DELETE Request
-  app.delete("/api/notes/:id", function (req, res) {
-    // Receive a query parameter containing the id of a note to delete and remove
-    console.log("delete", req.body);
-    db.pop(req.body);
-    res.json(db);
-  });
+  // // API DELETE Request
+  // app.delete("/api/notes/:id", function (req, res) {
+  //   // Receive a query parameter containing the id of a note to delete and remove
+  //   console.log("delete", req.body);
+  //   db.pop(req.body);
+  //   res.json(db);
+  // });
 };
