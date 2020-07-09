@@ -18,18 +18,24 @@ module.exports = function (app) {
     db.forEach((obj, i) => {
       obj.id = i;
     });
-    // Return the new note to the client.
+    // Return the new note to the client
     fs.writeFile("./db/db.json", JSON.stringify(db), function () {
-      console.log(db);
       res.json(db);
     });
   });
 
   // // API DELETE Request
-  // app.delete("/api/notes/:id", function (req, res) {
-  //   // Receive a query parameter containing the id of a note to delete and remove
-  //   console.log("delete", req.body);
-  //   db.pop(req.body);
-  //   res.json(db);
-  // });
+  app.delete("/api/notes/:id", function (req, res) {
+    var id = req.params.id;
+    // Use splice to delete the selected note from the db array
+    db.splice(id, 1);
+    // Reassign id for each note object
+    db.forEach((obj, i) => {
+      obj.id = i;
+    });
+    // Return the remaining notes to the client
+    fs.writeFile("./db/db.json", JSON.stringify(db), function () {
+      res.json(db);
+    });
+  });
 };
