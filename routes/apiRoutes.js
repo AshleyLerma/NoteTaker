@@ -15,7 +15,7 @@ module.exports = function (app) {
     // Receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
     db.push(req.body);
 
-    fs.writeFile("./db/db.json", JSON.stringify(db), function () {
+    fs.writeFile("../db/db.json", JSON.stringify(db), function () {
       res.json(db);
     });
   });
