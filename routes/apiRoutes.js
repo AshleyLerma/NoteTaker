@@ -12,10 +12,15 @@ module.exports = function (app) {
 
   // API POST Request
   app.post("/api/notes", function (req, res) {
-    // Receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
+    // Receive a new note to save on the request body, add it to the db.json file
     db.push(req.body);
-
-    fs.writeFile("../db/db.json", JSON.stringify(db), function () {
+    // Add unique id to each note
+    db.forEach((obj, i) => {
+      obj.id = i;
+    });
+    // Return the new note to the client.
+    fs.writeFile("./db/db.json", JSON.stringify(db), function () {
+      console.log(db);
       res.json(db);
     });
   });
